@@ -1,0 +1,26 @@
+{
+  "name": "lint-staged-git-error",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "index.js",
+  "author": "kmtr <kumagai@bear.tokyo>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "lint-staged",
+    "preinstall": "rm -f ../.git/hooks/pre-commit && echo '#!/bin/sh\ncd assets && npm run lint' > ../.git/hooks/pre-commit && chmod +x ../.git/hooks/pre-commit"
+  },
+  "lint-staged": {
+    "gitDir": "../",
+    "linters": {
+      "*.{js,jsx}": ["eslint --fix", "git add"]
+    }
+  },
+  "devDependencies": {
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "^6.8.0",
+    "lint-staged": "^3.2.2"
+  }
+}
